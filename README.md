@@ -1,4 +1,4 @@
-# web projects collection
+# Web Projects Collection
 A small collection I created for the random projects I created for the web
 
 
