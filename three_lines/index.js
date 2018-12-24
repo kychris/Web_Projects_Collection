@@ -13,8 +13,11 @@ function setup() {
     createCanvas(windowWidth, windowHeight);
     background(0);
     a1 = new anchor(300,200);
+    a1.c = color(255,0,0);
     a2 = new anchor(1200, 300);
+    a2.c = color(0,255,0);
     a3 = new anchor(700, 600);
+    a3.c = color(0,0,255);
     
 }
 
@@ -120,12 +123,13 @@ class anchor {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.radius = 15;
-        
+        this.radius = 30;
+        this.c = color(0,0,0)
     }
 
     update() {
-        fill(255, 125, 125);
+        fill(this.c);
+        // fill(255, 125, 125);
         ellipse(this.x, this.y, this.radius*2, this.radius*2);
     }
 }
