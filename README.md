@@ -1,5 +1,5 @@
 # Web Projects Collection
-A small collection for the random projects I created for the web
+A collection for the random projects I created for the web
 
 
 ## Boucing balls
