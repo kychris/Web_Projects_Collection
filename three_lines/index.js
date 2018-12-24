@@ -2,6 +2,10 @@ var a1;
 var a2;
 var a3;
 
+var a1_dragged = false;
+var a2_dragged = false;
+var a3_dragged = false;
+
 var systems = [];
 
 function setup() {   
@@ -20,20 +24,20 @@ function draw() {
     a2.update();
     a3.update();
     // console.log(dist(a.x, a.y, mouseX, mouseY));
-    if(mouseIsPressed) {
-        if(dist(mouseX, mouseY, a1.x, a1.y) <= a1.radius) {
-            a1.x = mouseX;
-            a1.y = mouseY;
-        }
-        if(dist(mouseX, mouseY, a2.x, a2.y) <= a2.radius) {
-            a2.x = mouseX;
-            a2.y = mouseY;
-        }
-        if(dist(mouseX, mouseY, a3.x, a3.y) <= a3.radius) {
-            a3.x = mouseX;
-            a3.y = mouseY;
-        }
+    
+    if(a1_dragged) {
+        a1.x = mouseX;
+        a1.y = mouseY;
     }
+    if(a2_dragged) {
+        a2.x = mouseX;
+        a2.y = mouseY;
+    }
+    if(a3_dragged) {
+        a3.x = mouseX;
+        a3.y = mouseY;
+    }
+    
     for (var l of systems) {
         l.update();
     }
@@ -46,7 +50,34 @@ function mousePressed() {
         l = new line_system();
         systems.push(l);
     }
+
+    if ((dist(mouseX, mouseY, a1.x, a1.y) <= a1.radius)) {
+        a1_dragged = true;
+    }
+
+    if ((dist(mouseX, mouseY, a2.x, a2.y) <= a2.radius)) {
+        a2_dragged = true;
+    }
+
+    if ((dist(mouseX, mouseY, a3.x, a3.y) <= a3.radius)) {
+        a3_dragged = true;
+    }
 }
+
+function mouseReleased() {
+    if ((dist(mouseX, mouseY, a1.x, a1.y) <= a1.radius)) {
+        a1_dragged = false;
+    }
+
+    if ((dist(mouseX, mouseY, a2.x, a2.y) <= a2.radius)) {
+        a2_dragged = false;
+    }
+
+    if ((dist(mouseX, mouseY, a3.x, a3.y) <= a3.radius)) {
+        a3_dragged = false;
+    }
+}
+
 
 function dist(x1,y1,x2,y2) {
     return sqrt(pow(abs(x1-x2), 2) + pow(abs(y1-y2), 2));
